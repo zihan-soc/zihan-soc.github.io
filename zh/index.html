@@ -80,7 +80,7 @@
     .intro {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 790px);
+      grid-template-columns: minmax(0, 1fr) 240px;
       align-items: center;
       gap: 46px;
       padding: 0 0 52px 30px;
@@ -88,8 +88,8 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .intro-photo { margin: 0; }
-    .intro-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
+    .intro-photo { width: 240px; margin: 0; justify-self: end; }
+    .intro-photo img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; object-position: center; }
 
     h1 {
       margin: 0 0 10px;
@@ -211,7 +211,7 @@
       .page { padding-top: 48px; }
       .intro { display: block; padding: 0 0 40px 18px; border-left-width: 3px; }
       .contact-row { flex-direction: column; align-items: flex-start; gap: 3px; }
-      .intro-photo { max-width: 520px; margin-top: 30px; }
+      .intro-photo { width: min(100%, 360px); margin-top: 30px; }
       .content-grid { display: block; padding-top: 42px; }
       aside { display: none; }
       .timeline-item { grid-template-columns: 1fr; gap: 2px; }
@@ -254,6 +254,7 @@
           定量研究方法，以及计算社会科学。
         </p>
       </div>
+      <figure class="intro-photo"><img src="../profile.jpg" alt="叶子涵"></figure>
     </header>
 
     <div class="content-grid">
