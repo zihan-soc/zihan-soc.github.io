@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic homepage of Zihan Ye, Ph.D. student in Sociology at The Chinese University of Hong Kong.">
+  <title>Zihan Ye | Sociology</title>
+  <style>
+    :root {
+      --paper: #f8faf9;
+      --ink: #172321;
+      --muted: #60706d;
+      --accent: #246d66;
+      --accent-pale: #dce9e6;
+      --line: #d8e0de;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Aptos", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      top: 0; right: 0;
+      width: 34vw; height: 100vh;
+      background: linear-gradient(180deg, rgba(36,109,102,0.045), transparent 58%);
+      pointer-events: none;
+    }
+
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+    a:hover { color: var(--ink); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 250, 249, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      width: min(980px, calc(100% - 56px));
+      min-height: 62px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-name {
+      color: var(--ink);
+      font-size: 0.92rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 0.84rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .cv-link { padding: 0.32rem 0.68rem; color: var(--accent); border: 1px solid var(--accent); }
+    .nav-links .language-link { padding-left: 18px; border-left: 1px solid var(--line); color: var(--accent); }
+
+    .page { width: min(980px, calc(100% - 56px)); margin: 0 auto; padding: 82px 0 70px; }
+
+    .intro {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 790px);
+      align-items: center;
+      gap: 46px;
+      padding: 0 0 52px 30px;
+      border-left: 4px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro-photo { margin: 0; }
+    .intro-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+      font-size: clamp(2.7rem, 7vw, 4.6rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+
+    .chinese-name {
+      margin-left: 0.2em;
+      color: var(--accent);
+      font-family: "Songti SC", SimSun, serif;
+      font-size: 0.46em;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      vertical-align: 0.16em;
+    }
+
+    .role { margin: 0; color: var(--ink); font-size: 1rem; font-weight: 650; }
+    .affiliation { margin: 1px 0 19px; color: var(--muted); font-size: 0.94rem; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 7px 20px; font-size: 0.86rem; }
+    .contact-row a { text-decoration: none; }
+
+    .bio { max-width: 720px; margin: 34px 0 0; color: #33413f; font-size: 1.08rem; line-height: 1.8; }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 700px) 170px;
+      justify-content: space-between;
+      gap: 72px;
+      padding-top: 54px;
+      align-items: start;
+    }
+    main { min-width: 0; counter-reset: section; }
+    section { scroll-margin-top: 86px; margin-bottom: 54px; counter-increment: section; }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 20px;
+      color: var(--ink);
+      font-size: 1.1rem;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+    h2::before { content: "0" counter(section); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; }
+
+    .plain-list { margin: 0; padding: 0; list-style: none; }
+
+    .publication {
+      position: relative;
+      margin: 0;
+      padding: 21px 22px 22px 58px;
+      border-top: 1px solid var(--line);
+    }
+    .publication:last-of-type { border-bottom: 1px solid var(--line); }
+    .publication:hover { background: rgba(220, 233, 230, 0.32); }
+
+    .pub-number {
+      position: absolute;
+      left: 20px; top: 23px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pub-title { margin: 0 0 7px; font-family: Georgia, "Times New Roman", serif; font-size: 1.02rem; font-weight: 600; line-height: 1.52; }
+    .pub-authors, .pub-venue, .pub-note { margin: 2px 0; color: var(--muted); font-size: 0.87rem; }
+    .pub-venue em { color: var(--ink); }
+    .pub-note { margin-top: 12px; }
+    .status { display: inline-block; margin-left: 0.55em; padding: 0.04rem 0.4rem; color: var(--accent); background: var(--accent-pale); font-size: 0.72rem; font-style: normal; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; }
+
+    .timeline-item { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 20px; padding: 15px 0; border-top: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 1px solid var(--line); }
+    .timeline-date { color: var(--accent); font-size: 0.8rem; font-weight: 650; white-space: nowrap; }
+    .timeline-title { margin: 0; font-weight: 700; line-height: 1.42; }
+    .timeline-meta { margin: 3px 0 0; color: var(--muted); font-size: 0.88rem; }
+
+    .methods { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 0; margin: 0; border-top: 1px solid var(--line); }
+    .methods dt, .methods dd { margin: 0; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .methods dt { color: var(--accent); font-size: 0.84rem; font-weight: 700; }
+    .methods dd { color: var(--muted); font-size: 0.9rem; }
+
+    .honor-list li, .service-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 0.89rem; }
+    .honor-list li:last-child, .service-list li:last-child { border-bottom: 1px solid var(--line); }
+    .honor-group + .honor-group { margin-top: 24px; }
+    .honor-group-title { margin: 0 0 7px; color: var(--accent); font-family: Georgia, "Times New Roman", serif; font-size: 0.87rem; font-style: italic; font-weight: 600; }
+    .item-note { display: block; margin-top: 2px; color: var(--muted); font-size: 0.8rem; font-style: italic; line-height: 1.5; }
+    .year { color: var(--accent); font-size: 0.82rem; font-weight: 650; white-space: nowrap; }
+
+    aside { position: sticky; top: 92px; padding-top: 13px; border-top: 3px solid var(--accent); }
+    .aside-label { margin: 0 0 10px; color: var(--ink); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+    aside a { display: block; padding: 4px 0; color: var(--muted); font-size: 0.8rem; text-decoration: none; }
+    aside a:hover { color: var(--accent); }
+
+    footer { width: min(980px, calc(100% - 56px)); margin: 0 auto; padding: 21px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.75rem; letter-spacing: 0.03em; }
+
+    @media (max-width: 760px) {
+      body::before { display: none; }
+      .nav, .page, footer { width: calc(100% - 36px); }
+      .nav { min-height: 58px; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.cv-link):not(.language-link) { display: none; }
+      .page { padding-top: 48px; }
+      .intro { display: block; padding: 0 0 40px 18px; border-left-width: 3px; }
+      .contact-row { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .intro-photo { max-width: 520px; margin-top: 30px; }
+      .content-grid { display: block; padding-top: 42px; }
+      aside { display: none; }
+      .timeline-item { grid-template-columns: 1fr; gap: 2px; }
+      .methods { grid-template-columns: 1fr; }
+      .methods dt { padding-bottom: 0; border-bottom: 0; }
+      .honor-list li, .service-list li { grid-template-columns: 1fr; gap: 0; }
+      .publication { padding-left: 42px; padding-right: 0; }
+      .pub-number { left: 8px; }
+      .year { margin-top: 1px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-name" href="#top">Zihan Ye</a>
+      <div class="nav-links">
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#honors">Scholarships &amp; Awards</a>
+        <a class="cv-link" href="ZihanYe.pdf">CV</a>
+        <a class="language-link" href="zh/" lang="zh">中文</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page" id="top">
+    <header class="intro">
+      <div class="intro-copy">
+        <h1>Zihan Ye <span class="chinese-name" lang="zh">叶子涵</span></h1>
+        <p class="role">Ph.D. Student in Sociology</p>
+        <p class="affiliation">The Chinese University of Hong Kong</p>
+        <div class="contact-row">
+          <a href="mailto:zihan.ye@link.cuhk.edu.hk">zihan.ye@link.cuhk.edu.hk</a>
+          <a href="ZihanYe.pdf">Curriculum Vitae</a>
+          <span>She/Her/Hers</span>
+        </div>
+        <p class="bio">
+          My research interests include social demography; inequality, social stratification,
+          and mobility; organizations, occupations, and work; quantitative methods; and
+          computational social science.
+        </p>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <main>
+        <section id="publications">
+          <h2>Publications</h2>
+          <article class="publication">
+            <span class="pub-number">1.</span>
+            <h3 class="pub-title">Between Algorithms and Experience: How Structural Position and Cost Conditions Shape Algorithm Aversion among Platform Workers</h3>
+            <p class="pub-authors">Tianyu Qiao<sup>*†</sup> and <strong>Zihan Ye</strong><sup>*</sup></p>
+            <p class="pub-venue"><em>Technology in Society</em><span class="status">Under Review</span></p>
+          </article>
+          <article class="publication">
+            <span class="pub-number">2.</span>
+            <h3 class="pub-title">Paradoxical Gender Choice in Child Custody: Evidence from Divorce Court Judgments in China</h3>
+            <p class="pub-authors"><strong>Zihan Ye</strong> and Yuying Tong<sup>†</sup></p>
+            <p class="pub-venue"><em>Social Science Research</em><span class="status">Under Review</span></p>
+          </article>
+          <p class="pub-note"><sup>*</sup> Co-first authors. <sup>†</sup> Corresponding author.</p>
+        </section>
+
+        <section id="education">
+          <h2>Education</h2>
+          <div class="timeline-item">
+            <div class="timeline-date">2026 - Present</div>
+            <div>
+              <p class="timeline-title">Ph.D. in Sociology</p>
+              <p class="timeline-meta">The Chinese University of Hong Kong · Hong Kong SAR</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021 - 2026</div>
+            <div>
+              <p class="timeline-title">LL.B. in Sociology</p>
+              <p class="timeline-meta">Peking University · Beijing, China</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="training">
+          <h2>Additional Training</h2>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div>
+              <p class="timeline-title">Exchange</p>
+              <p class="timeline-meta">University of Melbourne</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024</div>
+            <div>
+              <p class="timeline-title"><a href="https://engineering.stanford.edu/students-academics/global-engineering-programs/undergraduate-visiting-research-program-0">Undergraduate Visiting Research Program</a></p>
+              <p class="timeline-meta">Stanford University · Selected as one of 12-20 undergraduates annually from leading Chinese universities</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="methods">
+          <h2>Methods and Skills</h2>
+          <dl class="methods">
+            <dt>Technical</dt>
+            <dd>Python, R, Stata, MATLAB, LaTeX, Tableau, NVivo, and SPSS</dd>
+            <dt>Languages</dt>
+            <dd>Mandarin (native); English (advanced, TOEFL 111)</dd>
+          </dl>
+        </section>
+
+        <section id="honors">
+          <h2>Scholarships and Awards</h2>
+          <div class="honor-group">
+            <h3 class="honor-group-title">Postgraduate</h3>
+            <ul class="plain-list honor-list">
+              <li><span><a href="https://cerg1.ugc.edu.hk/hkpfs/index.html">Hong Kong PhD Fellowship Scheme</a> (HK$344,400 annually)<span class="item-note">Selected as one of 400 fellows annually from among Ph.D. applicants across Hong Kong.</span></span><span class="year">2026 - Present</span></li>
+              <li><span>CUHK Vice-Chancellor's PhD Scholarship Scheme (HK$80,000)</span><span class="year">2026</span></li>
+            </ul>
+          </div>
+          <div class="honor-group">
+            <h3 class="honor-group-title">Undergraduate</h3>
+            <ul class="plain-list honor-list">
+              <li><span>Jinfang Yang Overseas Scholarship (¥10,000)</span><span class="year">2025</span></li>
+              <li><span>Excellent Field Work Report Prize (¥3,000)</span><span class="year">2025</span></li>
+              <li><span>National Scholarship (¥10,000)</span><span class="year">2024</span></li>
+              <li><span>Merit Student, Peking University</span><span class="year">2024</span></li>
+              <li><span>Guangzhou Pharmaceutical Wanglaoji Scholarship (¥5,000)</span><span class="year">2023</span></li>
+              <li><span>Award for Academic Excellence, Peking University</span><span class="year">2023</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="service">
+          <h2>Service and Membership</h2>
+          <ul class="plain-list service-list">
+            <li><span>Youth Goodwill Ambassador, Jiangyin City</span><span class="year">2023 - 2025</span></li>
+            <li><span>American Sociological Association</span><span class="year">Member</span></li>
+          </ul>
+        </section>
+      </main>
+
+      <aside aria-label="Page sections">
+        <p class="aside-label">On this page</p>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#training">Training</a>
+        <a href="#methods">Skills</a>
+        <a href="#honors">Scholarships &amp; Awards</a>
+        <a href="#service">Service</a>
+      </aside>
+    </div>
+  </div>
+
+  <footer>© 2026 Zihan Ye</footer>
+</body>
+</html>
